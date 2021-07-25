@@ -1,15 +1,19 @@
 package hello.core.member;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
+    MemberService memberService = new MemberServiceImpl();
 
     @Test
     void join() {
-        // given ~이러 이러한게 주어졌을 때
-
-        // when ~했을 때
-
-        // then ~이렇게 된다 !
+        // given
+        Member member = new Member(1L, "memberA", Grade.VIP);
+        memberService.join(member);
+        // when
+        Member findMember = memberService.findMember(1L);
+        // then
+        Assertions.assertThat(member).isEqualTo(findMember);
     }
 }
